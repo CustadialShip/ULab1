@@ -1,16 +1,22 @@
 package com.company;
 
-class MainTest {
-    public void test() {
-        if (Main.isEqual(Main.calcTaylorForm(0.5), Main.calcTaylorSeries(0.5, Main.calcENum(5)))) {
-            System.out.println("Ok");
-        } else {
-            System.out.println("Oh oh(");
-        }
-        if (!Main.isEqual(Main.calcTaylorForm(0.5), Main.calcTaylorSeries(0.5, Main.calcENum(1)))) {
-            System.out.println("Ok");
-        } else {
-            System.out.println("Oh oh(");
-        }
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class MainTest {
+
+    @Test
+    public void calcTaylorSeries() {
+        double taylorSeriesResult = Main.calcTaylorSeries(0.5, Math.pow(10, -5));
+        double taylorSeriesExpected = -0.693;
+        assertEquals(taylorSeriesResult, taylorSeriesExpected, 0.001);
+    }
+
+    @Test
+    public void calcTaylorForm() {
+        double taylorFormResult = Main.calcTaylorForm(5);
+        double taylorFormExpected = -0.693;
+        assertEquals(taylorFormExpected, taylorFormResult, 0.001);
     }
 }
